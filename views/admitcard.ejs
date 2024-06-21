@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admit Card GRE(2024-25)</title>
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.box3 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 900px;
+    background-color: white;
+    border: 2px solid #333; /* darker border */
+    border-radius: 15px; /* more rounded corners */
+    padding: 30px; /* more space inside the box */
+    margin: 20px auto; /* Center horizontally */
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2); /* softer shadow effect */
+    text-align: left;
+}
+
+.box3 h1 {
+    font-size: 28px;
+    margin-bottom: 20px;
+    color: #333;
+    text-align: center;
+}
+
+.box3 p {
+    font-size: 18px;
+    margin: 8px 0;
+}
+
+h4 {
+    font-size:25px;
+    font-weight:bold;
+    background-color:red;
+}
+}
+.box3 img {
+    max-width: 150px;
+    border-radius: 50%;
+    margin-top: 10px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1); /* slight shadow around the image */
+}
+
+.box3 strong {
+    color: #333;
+}
+
+@media (max-width: 900px) {
+    .box3 {
+        width: 100%;
+        padding: 20px;
+    }
+
+    .box3 p {
+        font-size: 16px;
+    }
+
+    .box3 img {
+        max-width: 100px;
+    }
+    .profile-picture img {
+                max-width: 100px;
+            }
+}
+
+
+</style>
+</head>
+<body>
+    <div class="box3">
+    <h1>Admit Card GRE(2024-25)</h1>
+    <p><strong>Registration Number:</strong> <%= admitCardNumber %></p>
+    <p><strong>First Name:</strong> <%= user.firstname %></p>
+    <p><strong>Middle Name:</strong> <%= user.middlename %></p>
+    <p><strong>Last Name:</strong> <%= user.lastname %></p>
+    <p><strong>Address:</strong> <%= user.address %></p>
+    <p><strong>Phone number of the candidate through:</strong> <%= user.phone %></p>
+    <p><strong>Blood Group of the candidate:</strong> <%= user.bloodGroup %></p>
+    <p><strong>Gender of the candidate:</strong> <%= user.gender %></p>
+    <p><strong>City from which the candidate wants to take the test:</strong> <%= user.city %></p>
+    <h4><strong>You are advised to download the admit card for the test</strong></h4>
+    <div class="row mt-3">
+        <div class="col-sm-12 text-center">
+          <button onclick="printPage()" class="btn btn-primary">Print Page</button>
+        </div>
+      </div>
+    </div>
+    
+    </div>
+    
+    <script>
+      function printPage() {
+        window.print();
+      }
+    </script>
+</body>
+</html>
