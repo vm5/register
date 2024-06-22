@@ -1,8 +1,380 @@
 <!DOCTYPE html>
 <html style="background: #fff5ee">
 <head>
-  <title>Clause | Index</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.css">
+  <title>Home|Index</title>
   <style>
+    @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+i {
+  margin-right: 10px;
+}
+/*----------bootstrap-navbar-css------------*/
+.navbar-logo {
+  padding: 15px;
+  color: #fff;
+}
+.navbar-mainbg {
+  background-color: #3586ff;
+  padding: 0px;
+}
+#navbarSupportedContent {
+  overflow: hidden;
+  position: relative;
+}
+#navbarSupportedContent ul {
+  padding: 0px;
+  margin: 0px;
+}
+#navbarSupportedContent ul li a i {
+  margin-right: 10px;
+}
+#navbarSupportedContent li {
+  list-style-type: none;
+  float: left;
+}
+#navbarSupportedContent ul li a {
+  color: rgba(255, 255, 255, 0.5);
+  text-decoration: none;
+  font-size: 15px;
+  display: block;
+  padding: 20px 20px;
+  transition-duration: 0.6s;
+  transition-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  position: relative;
+}
+#navbarSupportedContent > ul > li.active > a {
+  color: #3586ff;
+  background-color: transparent;
+  transition: all 0.7s;
+}
+#navbarSupportedContent a:not(:only-child):after {
+  content: "\f105";
+  position: absolute;
+  right: 20px;
+  top: 10px;
+  font-size: 14px;
+  font-family: "Font Awesome 5 Free";
+  display: inline-block;
+  padding-right: 3px;
+  vertical-align: middle;
+  font-weight: 900;
+  transition: 0.5s;
+}
+#navbarSupportedContent .active > a:not(:only-child):after {
+  transform: rotate(90deg);
+}
+.hori-selector {
+  display: inline-block;
+  position: absolute;
+  height: 100%;
+  top: 0px;
+  left: 0px;
+  transition-duration: 0.6s;
+  transition-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  background-color: #fff;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  margin-top: 10px;
+}
+.hori-selector .right,
+.hori-selector .left {
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  background-color: #fff;
+  bottom: 10px;
+}
+.hori-selector .right {
+  right: -25px;
+}
+.hori-selector .left {
+  left: -25px;
+}
+.hori-selector .right:before,
+.hori-selector .left:before {
+  content: "";
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #3586ff;
+}
+.hori-selector .right:before {
+  bottom: 0;
+  right: -25px;
+}
+.hori-selector .left:before {
+  bottom: 0;
+  left: -25px;
+}
+
+@media (min-width: 992px) {
+  .navbar-expand-custom {
+    -ms-flex-flow: row nowrap;
+    flex-flow: row nowrap;
+    -ms-flex-pack: start;
+    justify-content: flex-start;
+  }
+  .navbar-expand-custom .navbar-nav {
+    -ms-flex-direction: row;
+    flex-direction: row;
+  }
+  .navbar-expand-custom .navbar-toggler {
+    display: none;
+  }
+  .navbar-expand-custom .navbar-collapse {
+    display: -ms-flexbox !important;
+    display: flex !important;
+    -ms-flex-preferred-size: auto;
+    flex-basis: auto;
+  }
+}
+
+@media (max-width: 991px) {
+  #navbarSupportedContent ul li a {
+    padding: 12px 30px;
+  }
+  .hori-selector {
+    margin-top: 0px;
+    margin-left: 10px;
+    border-radius: 0;
+    border-top-left-radius: 25px;
+    border-bottom-left-radius: 25px;
+  }
+  .hori-selector .left,
+  .hori-selector .right {
+    right: 10px;
+  }
+  .hori-selector .left {
+    top: -25px;
+    left: auto;
+  }
+  .hori-selector .right {
+    bottom: -25px;
+  }
+  .hori-selector .left:before {
+    left: -25px;
+    top: -25px;
+  }
+  .hori-selector .right:before {
+    bottom: -25px;
+    left: -25px;
+  }
+}
+
+footer {
+  position: relative;
+  width: 100%;
+  background: #3586ff;
+  min-height: 100px;
+  padding: 20px 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+
+footer .social_icon,
+footer .menu {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px 0;
+}
+
+footer .social_icon li,
+footer .menu li {
+  list-style: none;
+}
+footer .social_icon li a {
+  font-size: 2em;
+  color: #ccc;
+  margin: 0 10px;
+  display: inline-block;
+  transition: 0.5s;
+}
+footer .social_icon li a:hover {
+  transform: translateY(-15px);
+  color: blue;
+}
+
+footer .menu li a {
+  font-size: 1.2em;
+  color: #ccc;
+  margin: 0 10px;
+  display: inline-block;
+  transition: 0.5s;
+  text-decoration: none;
+  opacity: 0.75;
+}
+footer .menu li a:hover {
+  opacity: 1;
+  color: #fff;
+}
+p {
+  color: whtie;
+  text-align: center;
+  margin-top: 15px;
+  margin-bottom: 10px;
+  font-size: 1.1em;
+}
+
+.copyright {
+  color: white;
+}
+
+/*wave and animation*/
+footer .wave {
+  position: absolute;
+  top: -100px;
+  left: 0;
+  width: 100%;
+  height: 100px;
+  background: url(https://i.ibb.co/rZt4Nhg/wave.png);
+  background-size: 1000px 100px;
+}
+
+footer .wave#wave1 {
+  z-index: 1000;
+  opacity: 1;
+  bottom: 0;
+  animation: animateWave 4s linear infinite;
+}
+
+footer .wave#wave2 {
+  z-index: 999;
+  opacity: 0.5;
+  bottom: 10px;
+  animation: animateWave_02 4s linear infinite;
+}
+footer .wave#wave3 {
+  z-index: 1000;
+  opacity: 0.2;
+  bottom: 0;
+  animation: animateWave 3s linear infinite;
+}
+
+footer .wave#wave4 {
+  z-index: 999;
+  opacity: 0.7;
+  bottom: 20px;
+  animation: animateWave_02 3s linear infinite;
+}
+
+@keyframes animateWave {
+  0% {
+    background-position-x: 1000px;
+  }
+  100% {
+    background-position-x: 0px;
+  }
+}
+
+@keyframes animateWave_02 {
+  0% {
+    background-position-x: 0px;
+  }
+  100% {
+    background-position-x: 1000px;
+  }
+}
+html,
+body {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: stretch;
+}
+
+header,
+footer {
+  flex: 0 0 auto;
+}
+
+main {
+  text-align: center;
+  padding: 5vmin;
+  flex: 1 0 auto;
+}
+
+h1 {
+  text-align: center;
+}
+
+p {
+  color: grey;
+}
+
+.profile {
+  height: 200px;
+  width: 200px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+form {
+  margin-top: 50px;
+}
+
+.feedback-input {
+  color: white;
+  font-weight: 500;
+  font-size: 18px;
+  border-radius: 5px;
+  line-height: 22px;
+  background-color: transparent;
+  border: 2px solid #3586ff;
+  transition: all 0.3s;
+  padding: 13px;
+  margin-bottom: 15px;
+  width: 100%;
+  box-sizing: border-box;
+  outline: 0;
+}
+
+.feedback-input:focus {
+  border: 2px solid #3586ff;
+}
+
+textarea {
+  height: 150px;
+  line-height: 150%;
+  resize: vertical;
+}
+
+[type="submit"] {
+  width: 100%;
+  background: #3586ff;
+  border-radius: 5px;
+  border: 0;
+  cursor: pointer;
+  color: white;
+  font-size: 24px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  transition: all 0.3s;
+  margin-top: -4px;
+  font-weight: 700;
+}
+[type="submit"]:hover {
+  background: #3586ff;
+}
+
     body {
       font-family: Arial, sans-serif;
       margin: 0;
@@ -26,6 +398,34 @@
       overflow: hidden; /* Hide overflowing content */
     }
 
+    .nav1 {
+      display: flex;
+      justify-content: center; /* Center content horizontally */
+      align-items: center;
+      width: 98%;
+      height: 60px;
+      background-color: yellow; /* Change background color */
+      padding: 0 20px; /* Add padding */
+      margin: auto; /* Center horizontally */
+    }
+
+    .nav1 a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      margin: 0 10px;
+    }
+
+    .nav1 a:hover {
+      text-decoration: underline;
+    }
+
+    .nav1 h5 {
+      font-family: Arial Black;
+      font-size: 18px;
+      margin: 0;
+    }
+
     .silver a {
       display: flex;
       align-items: center;
@@ -38,6 +438,26 @@
 
     .silver a:hover {
       color: #008cba; /* Highlight color on hover */
+    }
+
+    .new-sticker {
+      position: relative;
+    }
+
+    .new-sticker::before {
+      content: "New";
+      display: inline-block;
+      background-color: red;
+      color: white;
+      padding: 2px 5px;
+      border-radius: 5px;
+      font-size: 14px;
+      font-weight: bold;
+      margin-right: 10px;
+      position: absolute;
+      top: -10px;
+      left: -5px;
+      animation: shine 1s infinite;
     }
 
     .box {
@@ -61,6 +481,41 @@
       font-weight: bold;
       font-size: 25px;
     }
+li {
+    color: #ff6600;
+      font-weight: bold;
+      font-size: 25px;
+      justify-contents: center;
+  }
+	
+    /* Shining animation */
+    @keyframes shine {
+      0%, 100% {
+        opacity: 0.6;
+        transform: scale(1);
+      }
+      50% {
+        opacity: 1;
+        transform: scale(1.2);
+      }
+    }
+
+    @keyframes slide {
+      0%, 100% {
+        transform: translateX(-100%);
+      }
+      50% {
+        transform: translateX(100%);
+      }
+    }
+
+    .slide-in-out {
+      animation: slide 100s infinite;
+    }
+
+    .content {
+      padding-left: 20px;
+    }
 
     h1 {
       text-align: center;
@@ -71,7 +526,7 @@
     h2 {
       font-weight: bold;
       font-family: Arial Black;
-      color: white;
+      color: brown;
     }
 
     h3 {
@@ -103,6 +558,17 @@
       color: orange;
       font-size: 19px;
     }
+
+    table {
+      margin: auto;
+    }
+
+    /* Adding a scratched effect */
+    .scratched {
+      text-decoration: line-through;
+      color: gray;
+    }
+
     .image-box {
       margin: 0 auto; /* Center horizontally */
       width: 100%; /* Ensure the image spans the entire width */
@@ -116,11 +582,65 @@
       height: auto; /* Maintain aspect ratio */
     }
 
+    .i-box {
+  margin: 0 auto; /* Center horizontally */
+  width: 300px; /* Adjust width as needed */
+  max-height: 300px; /* Adjust max-height as needed */
+  overflow: hidden; /* Hide any overflow content */
+  text-align: center; /* Center the image horizontally within its container */
+}
+
+.i-box img {
+  width: 100%; /* Make the image fill the entire width of its container */
+  height: auto; /* Maintain aspect ratio */
+}
+
     /* Flexbox container for side-by-side layout */
     .flex-container {
       display: flex;
       justify-content: space-around; /* Space items evenly */
       flex-wrap: wrap; /* Allow wrapping */
+    }
+
+    /* CSS for a box */
+    .box1, .box2 {
+      width: 1000px;
+      height: 4000px;
+      background-color: lightblue;
+      border: 2px solid #000; /* black border */
+      border-radius: 10px; /* rounded corners */
+      padding: 20px; /* space inside the box */
+      margin: 20px; /* space outside the box */
+      box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); /* shadow effect */
+      display: flex; /* for flexbox layout if needed */
+      flex-direction: column;
+      justify-content: center; /* center items horizontally */
+      align-items: center; /* center items vertically */
+    }
+.box3 {
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  width: 300px;
+  height: 300px;
+  background-color: white;
+  border: 2px solid #000; /* black border */
+  border-radius: 10px; /* rounded corners */
+  padding: 20px; /* space inside the box */
+  margin: 20px auto; /* Center horizontally */
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); /* shadow effect */
+}
+
+
+    /* Example of text styling inside the box */
+    .box1 p, .box2 p {
+      font-family: 'Georgia', serif; /* Elegant serif font */
+      font-size: 20px; /* Slightly larger font size */
+      line-height: 1.6; /* Increased line height for readability */
+      color: #333; /* Dark grey text color */
+      margin: 20px 0; /* Vertical spacing */
+      text-align: justify; /* Justified text alignment */
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1); /* Subtle text shadow */
     }
 
     .styled-button {
@@ -141,335 +661,135 @@
     .styled-button:hover {
       background-color: #45a049; /* Darker green on hover */
     }
+.menu {
+  background-color: #333;
+  padding: 10px 20px;
+}
 
-    .clock {
+.menu-toggle {
+  color: #fff;
+  cursor: pointer;
+}
+
+.menu-content {
+  display: none;
+}
+
+.show {
+  display: block;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: #fff;
+  display: block;
+  padding: 10px 0;
+}
+
+.nav-link:hover {
+  background-color: #555;
+}
+
+ .clock {
       font-family: 'Courier New', Courier, monospace;
       font-size: 3em; /* Increase font size */
       color: #333; /* Darker text color */
       letter-spacing: 0.05em; /* Add a bit of spacing between characters */
       text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1); /* Add a subtle text shadow */
     }
-
-    .nav1 {
-      display: flex;
-      justify-content: space-between; /* Center content horizontally */
-      align-items: center;
-      width: 98%;
-      height: 60px;
-      background-color: blue; /* Change background color */
-      padding: 0 20px; /* Add padding */
-      margin: auto; /* Center horizontally */
-    }
-
-    .nav1 a {
-      color: white;
-      text-decoration: none;
-      font-weight: bold;
-      margin: 0 10px;
-    }
-
-    .nav1 a:hover {
-      text-decoration: underline;
-    }
-
-    .nav1 h5 {
-      font-family: Arial Black;
-      font-size: 18px;
-      margin: 0;
-    }
-.box1{
-      width: 1290px;
-      height: 950px;
-      background-color: white;
-      border: 2px solid #000; /* black border */
-      border-radius: 10px; /* rounded corners */
-      padding: 20px; /* space inside the box */
-      margin: 20px; /* space outside the box */
-      box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); /* shadow effect */
-      display: flex; /* for flexbox layout if needed */
-      flex-direction: column;
-      justify-content: center; /* center items horizontally */
-      align-items: center; /* center items vertically */
-    }
-.box2 {
-      width: 1290px;
-      height: 100px;
-      background-color: white;
-      border: 2px solid #000; /* black border */
-      border-radius: 10px; /* rounded corners */
-      padding: 20px; /* space inside the box */
-      margin: 20px; /* space outside the box */
-      box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); /* shadow effect */
-      display: flex; /* for flexbox layout if needed */
-      flex-direction: column;
-      justify-content: center; /* center items horizontally */
-      align-items: center; /* center items vertically */
-    }
-
-    .box1 p{
-      font-family: 'Georgia', serif; /* Elegant serif font */
-      font-size: 18px; /* Slightly larger font size */
-      line-height: 1.6; /* Increased line height for readability */
-      color: #333; /* Dark grey text color */
-      margin: 20px 0; /* Vertical spacing */
-      text-align: justify; /* Justified text alignment */
-      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1); /* Subtle text shadow */
-    }
- .box2 p {
-      font-family: 'Georgia', serif; /* Elegant serif font */
-      font-size: 18px; /* Slightly larger font size */
-      line-height: 1.6; /* Increased line height for readability */
-      color: #333; /* Dark grey text color */
-      margin: 20px 0; /* Vertical spacing */
-      text-align: justify; /* Justified text alignment */
-      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1); /* Subtle text shadow */
-    }
-
-
-    .nav2 {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      width: 98%;
-      height: 60px;
-      background-color: silver; /* Change background color */
-      color: red;
-      padding: 0 20px; /* Add padding */
-    }
-
-    .nav2 a {
-      color: white;
-      text-decoration: none;
-      font-weight: bold;
-      margin: 0 10px;
-    }
-
-    .nav2 a:hover {
-      text-decoration: underline;
-    }
-
-    .nav2 h5 {
-      font-family: Arial Black;
-      font-size: 18px;
-      margin: 0;
-    }
-.nav3 {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      width: 98%;
-      height: 60px;
-      background-color: silver; /* Change background color */
-      color: red;
-      padding: 0 20px; /* Add padding */
-    }
-
-    .nav3 a {
-      color: white;
-      text-decoration: none;
-      font-weight: bold;
-      margin: 0 10px;
-    }
-
-    .nav3 a:hover {
-      text-decoration: underline;
-    }
-
-    .nav3 h5 {
-      font-family: Arial Black;
-      font-size: 18px;
-      margin: 0;
-    }
- #proceedButton {
-        visibility: hidden;
-    }
-
- #button1, #button2 {
-    position: absolute; /* Position absolutely relative to .nav2 */
-    top: 470px; /* Adjust as needed to place above the .nav2 box */
-}
-#button1 {
-    left: 30px; /* Adjust as needed */
-}
-#button2 {
-    right: 10px; /* Adjust as needed */
-}
-table {
-            border-collapse: collapse;
-            width: 100%;
-        }
-        
-        th, td {
-            border: 1px solid black;
-            padding: 8px;
-            text-align: left;
-        }
-        
-        th {
-            background-color: yellow; 
-        }
-         tr {
-	    background-color: violet;
-       }
   </style>
 </head>
 <body>
-  <div class="table-container">
-    <div class="image-box">
-      <img src="gre.png" alt="GRE Image">
-    </div>
-  </div>
-  <div id="clock" class="clock">The current time is 00:00:00</div>
-  <div class="nav1">
-    <h2>GRE 2024-25</h2>
-  </div>
-  <div class="nav2">
-    <h5>IMPORTANT INFORMATION</h5>
-  </div>
-  <div class="box1">
-  <p>Read the below instructions carefully, before filling up the online application form. You are advised to take a printout of these instructions to refer to the same while filling out the online application form:</p> 
-  <br>
-  <ol>
-    <li>Apply online:</li>
-    <ul>
-      <li>Apply exclusively through the official GRE Testing Portal website. </li>
-      <li>GRE (2024-25) will be conducted three times. Last date to apply for one mock or all the mocks is 11th August, 2024. </li>
-    </ul>
-    <br>
-    <li>Application Form submission:</li>
-    <ul>
-      <li>First REGISTER to obtain a system-generated, unique, 6-digit Application Number (or User ID) beginning with "GRE" and Password. Note down this number for future correspondence.</li>
-      <li>Use a valid Email-ID and Mobile Number, which must remain active until the admission process gets completed.
-      Application Number and Password will be sent to the registered email address and mobile number.</li>
-      <li>Ensure accuracy in providing Name, Date of Birth, Mobile Number, Email Address, and Gender, as these details cannot be modified post-registration.</li>
-    </ul>
-    <br>
-    <li>Form Printout:</li>
-    <ul>
-      <li>Upon completing the online form and payment, it is recommended to take a printout for future reference.</li>
-    </ul>
-    <br>
-    <li>GRE(2024-25) Participation:</li>
-    <ul>
-      <li>A candidate may appear a maximum of three times.</li>
-      <li>GRE(2024-25) will be held in three levels: L1 (17th August, 2024 to 18th August, 2024), L2 (5th October, 2024 to 6th October, 2024) and L3 (2nd November, 2024 to 3rd Novemeber, 2024).</li>
-      <li>A candidate may opt for L1 or ALL. A candidate may opt to appear thrice, even at the time of the first application. For a candidate who has appeared thrice in GRE (2024-25), the higher of the three scores will be considered for admission.</li>
-      <li>A candidate may also choose to appear the second time (i.e. L2) after the first appearance. To facilitate this process, candidates who have appeared during L1 but had not originally exercised the option to appear twice will be allowed to apply for L2 during and the same for L3 during the allotted dates that can be viewed on the website itself.</li>
-      <li>Candidates who did not register during (7th July, 2024 to 11th August, 2024) can register for only L2 and L3 during the allotted dates that can be viewed on the website itself.</li>
-    </ul>
-    <br>
-    <li>Application deadline:</li>
-    <ul>
-      <li>The last date to register for GRE(2024-25) (L1 or all of them) is 11th August, 2024.</li>
-      <li>Submit the online form with the prescribed fee by 5:00 PM on the deadline. No need to send the form by post.</li>
-    </ul>
-    <br>
-    <li>Payment information</li>
-    <ul>
-      <li>Payment information is not captured by ETS server.</li>
-    </ul>
-    <br>
-    <li>Additional note:</li>
-    <ul>
-      <li>The pattern of the tests remains the same, i.e., QR+VR distributed in 4 sets with a total of 54 questions and 1 mark each.</li>
-      <li>The structure for AWA also remains the same, i.e., Analysis of an issue for 30 minutes.</li>
-      <li>The total time duration for QR+VR, however, is being increased to 88 minutes from 84 minutes.</li>
-      <li>The test can be taken at any time frame for the allotted time between 7 AM and 11 PM (both sections).</li>
-      <li>You are advised not to believe in fake calls, emails, posts, and SMS making false promises to help candidates clear the GRE.</li>
-      <li>Applications for Mock-2 only will open during the dates that will be intimated via the website.</li>
-      <li>All the updates regarding the admission process will be posted on the original website.</li>
-      <li><a href="https://vm5.github.io/scheuldegre/">Click here</a> to see all the important dates related to the admission process.</li>
-    </ul>
-  </ol>
-  </div>
-<div class="nav3">
-    <h5>KEY DATES</h5> 
-    </div><br>
-<div class="box2">
-   <table border="1">
-   <tr>
-	<th>Starting date for application</th>
-	<th>Last date for online submission</th>
-  </tr>
-   <tr>
-	<td>7th July, 2024</td>
-	<td>11th August, 2024</td>
-   </tr>
-</table>
-</div> 
-<form>
-    <label>
-        <input type="checkbox" name="terms" id="terms" value="I have read and understood the terms and conditions for applying for the GRE">
-        I have read and understood the terms and conditions for applying for the GRE
-    </label>
-</form>
-<a href="https://vm5.github.io/r/" id="proceedButton" class="styled-button">Proceed for registering</a>
+  <header>
+  <nav class="navbar navbar-expand-custom navbar-mainbg">
+    <button class="navbar-toggler" type="button" aria-controls="navbarSupportedContent" aria-expanded="false"
+      aria-label="Toggle navigation">
+      <i class="fas fa-bars text-white"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto">
+        <div class="hori-selector">
+          <div class="left"></div>
+          <img src="gre.png" alt="GRE Image">
+        </div>
+ 
+      <nav class="menu">
+    <div class="menu-toggle" onclick="toggleMenu()">Important links</div>
+    <div class="menu-content">
+          <a class="nav-link" href="https://main--gretests.netlify.app/"><i class="far fa-copy"></i>Home</a>
+          <a class="nav-link" href="https://vm5.github.io/register/"><i class="fas fa-file-signature"></i>
+Register for the GRE</a>
+          <a class="nav-link" href="https://vm5.github.io/scheuldegre/"><i class="fas fa-calendar"></i>
+Tentative schedule(s)</a>
+       </li>
 
-   <footer>
+      </ul>
+    </div>
+  </nav>
+</header>
+<main class="container"></main>
+	<div id="clock" class="clock">The current time is 00:00:00</div>
+    <div class="silver">
+    <a href = "https://reggret.netlify.app/" >Register for the GRE</a>
+    <a href = "https://vm5.github.io/scheuldegre/"> Tentative schedule(s)</a>
+   </div>
+  
+   <div class="box1">
+	   
+	<h4>Announcements</h4>
+        <h5 class="new-sticker">ETS invites applications for registering into GRE (2024-25), the only online test for admission to grad schools mainly in the USA and Canada. Registration lines shall be open till 11th August, 2024(5pm)Thank you</h5>
+	   <h5 <strong>Steps for registering</strong></h5><h4> 
+<ul>
+<li>Navigate to important links</li>
+<li>Click on register for the GRE</li>
+<li>Read all the guidelines and proceed for final registration</li>
+</ul>
+[Posted on 22-JUN-2024]</h4>
+		   
+  </div>
+<div class="box3">
+   <h2>You can also access the website with the following QR code</h2>
+      <div class="i-box">
+      <img src = "nqr.png" alt = "QR IMAGE">
+      </div>
+ </div>
+<footer>
     <h5 class="heading2">&copy; GRE TESTING PORTAL</h5>
+
+  <div class="waves">
+  <div class="footer wave" id="wave1"></div> <!-- Added ID "wave1" -->
+  <div class="footer wave" id="wave2"></div> <!-- Added ID "wave2" -->
+  <ul class="social_icon">
+    <li><a href="https://www.facebook.com/GREGeneralTest/"><ion-icon name="logo-facebook"></ion-icon></a></li>
+    <li><a href="https://www.linkedin.com/company/educational-testing-service-gre"><ion-icon name="logo-linkedin"></ion-icon></a></li>
+    <li><a href="https://www.instagram.com/gregeneraltest/?hl=en"><ion-icon name="logo-instagram"></ion-icon></a></li>
+  </ul>
 </footer>
-<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+ <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
 <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 <script>
-    document.getElementById("terms").addEventListener("change", function() {
-        const proceedButton = document.getElementById("proceedButton");
-        if (this.checked) {
-            proceedButton.style.visibility = "visible";
-        } else {
-            proceedButton.style.visibility = "hidden";
-        }
-    });       
-     function gettime() {
-      const now = new Date();
-      const hours = String(now.getHours()).padStart(2, '0');
-      const minutes = String(now.getMinutes()).padStart(2, '0');
-      const seconds = String(now.getSeconds()).padStart(2, '0');
+function gettime(){
+	const now = new Date();
+  	const hours = String(now.getHours()).padStart(2, '0');
+  	const minutes = String(now.getMinutes()).padStart(2, '0');
+        const seconds = String(now.getSeconds()).padStart(2, '0');
+  	return `${hours}:${minutes}:${seconds}`;
+}
 
-      return `${hours}:${minutes}:${seconds}`;
-    }
+function updatetime(){
+let currenttime = document.querySelector("#clock");
+currenttime.textContent = `${gettime()}`;
+}
+updatetime();
+setInterval(updatetime, 1000);
+document.querySelector("#clock").style.textAlign = "right";
+document.querySelector(".box1").style.width = "1270px";
+document.querySelector(".box1").style.height = "200px;";
+document.querySelector(".silver").style.backgroundColor = "violet";
 
-    function updatetime() {
-      let currenttime = document.querySelector("#clock");
-      currenttime.textContent = `${gettime()}`;
-    }
-    
-    updatetime();
-    setInterval(updatetime, 1000);
-    document.querySelector("#clock").style.textAlign = "right";
-
-    let button1 = document.createElement("button");
-    button1.innerText = "+";
-    button1.id = "button1";
-    button1.className = "styled-button";
-    let button2 = document.createElement("button");
-    button2.innerText = "-";
-    button2.id = "button2";
-    button2.className = "styled-button";
-    let button3 = document.createElement("button");
-    button3.innerText = "+";
-    button3.id = "button1";
-    button3.className = "styled-button";
-    let button4 = document.createElement("button");
-    button4.innerText = "-";
-    button4.id = "button2";
-    button4.className = "styled-button";
-    document.querySelector(".box1").appendChild(button1);
-    document.querySelector(".box1").appendChild(button2);
-    document.querySelector(".box2").appendChild(button1);
-    document.querySelector(".box2").appendChild(button2);
-    button1.addEventListener("click",() =>{
-	document.querySelector(".box1").style.visibility = "visible";
-    });
-    button2.addEventListener("click",() =>{
-	document.querySelector(".box1").style.visibility = "hidden";
-    });	
-    button1.addEventListener("click",() =>{
-	document.querySelector(".box2").style.visibility = "visible";
-    });
-    button2.addEventListener("click",() =>{
-	document.querySelector(".box2").style.visibility = "hidden";
-    });
-    let version = document.createElement("p");
+document.querySelector(".heading2").style.textAlign = "center";
+document.querySelector(".heading2").style.backgroundColor = "pink";
+let version = document.createElement("p");
 version.innerText = "Version 2.1.0";
 version.classList.add("version");
 document.body.appendChild(version);
@@ -478,8 +798,10 @@ document.querySelector(".version").style.fontSize = "30px";
 document.querySelector(".version").style.textAlign = "center";
 
 document.querySelector(".version").style.backgroundColor = "red";
-document.querySelector(".flex-container").style.backgroundColor = "purple";
-  </script>
-
+  function toggleMenu() {
+      var menuContent = document.querySelector('.menu-content');
+      menuContent.classList.toggle('show');
+    }
+</script>
 </body>
 </html>
